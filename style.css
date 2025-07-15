@@ -1,47 +1,155 @@
-/* Cambiar color de fondo del body */
 body {
-  background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
 }
 
-/* Encabezado */
-h1, h2 {
-  font-weight: bold;
-  color: #2c3e50;
+/* Estilos para las tarjetas de autos */
+.car-card .card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Tarjetas de autos */
-.card {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out;
+.car-card .card:hover {
+    transform: translateY(-5px); /* Pequeño levantamiento al pasar el mouse */
 }
 
-.card:hover {
-  transform: scale(1.02);
+.car-hover {
+    position: relative;
+    overflow: hidden; /* Asegura que el contenido que se desliza esté oculto hasta el hover */
 }
 
-/* Botones */
-.btn-primary {
-  background-color: #007bff;
-  border: none;
+.car-hover img {
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.car-hover .card-body {
+    padding: 1.25rem;
+    position: relative; /* Para que el texto se mantenga sobre el hover */
+    z-index: 1; /* Asegura que el texto sea visible */
+    background-color: white; /* Fondo para el texto */
 }
 
-/* Formulario */
-form label {
-  font-weight: bold;
+.car-hover .card-title {
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 0.5rem;
 }
 
-/* Footer */
-footer {
-  font-size: 14px;
+.car-hover .card-text {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+.car-info-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 60px; /* Deja espacio en la parte inferior para los botones */
+/*
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 2;
+    border-radius: 0.5rem;
 }
 
-/* Responsive spacing */
-@media (max-width: 768px) {
-  .card {
+.car-hover:hover .car-info-hover {
+    opacity: 1;
+}
+*/
+
+/* También revisa si .car-hover tiene algún estilo que ya no sea necesario.
+   Si tu .car-hover es simplemente la tarjeta misma (como en mi ejemplo),
+   entonces las reglas para .car-hover img y .car-hover .card-body se pueden quedar.
+   Si tenías un div aparte con clase .car-hover que envolvía la tarjeta, ese div
+   y sus estilos podrían eliminarse. */
+
+/* Ajustes menores si los necesitas para el card-footer con un solo botón: */
+.car-card .card-footer {
+    /* Puedes ajustar el padding o justificación si lo quieres distinto al d-flex justify-content-end */
+    /* Por ejemplo, para centrarlo si cambias de idea: */
+    /* justify-content: center; */
+}
+
+
+
+/* Estilos para el formulario de contacto */
+#formulario-contacto {
+    background-color: #343a40 !important; /* Oscuro */
+    padding: 3rem 0;
+}
+
+#formulario-contacto h2 {
+    color: #ffffff;
+    font-weight: bold;
     margin-bottom: 1rem;
-  }
+}
+
+#formulario-contacto p {
+    color: #ced4da;
+    margin-bottom: 2rem;
+}
+
+#formulario-contacto .form-label {
+    color: #ffffff;
+}
+
+#formulario-contacto .form-control {
+    background-color: #495057;
+    border: 1px solid #6c757d;
+    color: #ffffff;
+}
+
+#formulario-contacto .form-control::placeholder {
+    color: #adb5bd;
+}
+
+#formulario-contacto .form-control:focus {
+    background-color: #495057;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    color: #ffffff;
+}
+
+#formulario-contacto .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    font-weight: bold;
+}
+
+#formulario-contacto .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #212529 !important; /* Más oscuro que el navbar */
+}
+/* Estilos para la sección "Sobre Nosotros" */
+#sobre-nosotros h2 {
+    font-size: 2.5rem; /* Ajusta el tamaño del título */
+    /* font-family: 'Georgia', serif; /* Cambia la fuente si lo deseas */
+}
+
+#sobre-nosotros p {
+    line-height: 1.8; /* Aumenta el espaciado entre líneas para mejor lectura */
+    /* color: #495057; /* Un gris un poco más oscuro que text-secondary si lo prefieres */
+}
+
+#sobre-nosotros img {
+    /* Si quieres algún estilo adicional para la imagen */
+    /* border: 5px solid #0d6efd; /* Ejemplo: un borde azul */
 }
