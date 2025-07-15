@@ -1,75 +1,47 @@
+/* Cambiar color de fondo del body */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f5f5f5;
+  background-color: #f4f4f4;
 }
 
-header {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 1.5em;
+/* Encabezado */
+h1, h2 {
+  font-weight: bold;
+  color: #2c3e50;
 }
 
-.autos {
-  padding: 1.5em;
+/* Tarjetas de autos */
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
-.galeria {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
+.card:hover {
+  transform: scale(1.02);
 }
 
-.auto {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
-  padding: 1em;
-  text-align: center;
-  width: 200px;
-}
-
-.auto img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #3498db;
-  color: white;
+/* Botones */
+.btn-primary {
+  background-color: #007bff;
   border: none;
-  padding: 0.5em;
-  margin-top: 0.5em;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.contacto {
-  background-color: #ecf0f1;
-  padding: 2em;
-  text-align: center;
+.btn-primary:hover {
+  background-color: #0056b3;
 }
 
-form {
-  max-width: 400px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+/* Formulario */
+form label {
+  font-weight: bold;
 }
 
-input, textarea {
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
+/* Footer */
 footer {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 1em;
-  margin-top: 2em;
+  font-size: 14px;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
 }
