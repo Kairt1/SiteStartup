@@ -162,3 +162,19 @@ ordenSelect.addEventListener("change", renderAutos);
 // Renderizar al cargar
 renderAutos();
 
+// nose
+document.body.addEventListener('click', function (e) {
+  if (e.target.classList.contains('btn-success')) {
+    const modal = e.target.closest('.modal');
+    const autoId = modal.id.replace('modal-', '');
+    const tipoPago = modal.querySelector(`#tipoPago-${autoId}`).value;
+    const cuotas = modal.querySelector(`#cuotas-${autoId}`).value;
+
+    let mensaje = `¡Gracias por tu interés!\n\nHas elegido comprar el vehículo con:\n- Tipo de pago: ${tipoPago}`;
+    if (tipoPago === "Financiamiento") {
+      mensaje += `\n- Cuotas: ${cuotas || 'No especificado'}`;
+    }
+
+    alert(mensaje);
+  }
+});
