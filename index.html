@@ -382,8 +382,8 @@
                             <p class="card-text">Kilometraje: ${auto.kilometraje.toLocaleString()} km</p>
                             <p class="card-text small text-muted">${auto.descripcion}</p>
                         </div>
-                        <div class="card-footer bg-white border-0 pt-0 pb-3 d-flex justify-content-end">
-                            <button class="btn btn-primary btn-sm" onclick="scrollToContactFormAndSelectAuto('${auto.titulo}')">Comprar</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#comprar-${auto.id}">Comprar</button>
                         </div>
                     </div>
                 </div>`;
@@ -457,3 +457,5 @@
     // **IMPORTANTE:** Esta línea asegura que la sección "Comprar" esté visible por defecto al cargar el formulario
     showFormSection('comprar');
 </script>
+
+
