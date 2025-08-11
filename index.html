@@ -217,6 +217,7 @@
     // Datos de los autos (¡Asegúrate de que cada auto tenga la propiedad 'tipo' y 'kilometraje'!)
     const autos = [
         {
+            id: 1,
             marca: "hyundai",
             titulo: "Hyundai Elantra 2018",
             precio: 10500,
@@ -227,6 +228,7 @@
             kilometraje: 75000
         },
         {
+            id: 2,
             marca: "toyota",
             titulo: "Toyota Hilux 2017 (Doble Cabina)",
             precio: 23000,
@@ -237,6 +239,7 @@
             kilometraje: 90000
         },
         {
+            id: 3,
             marca: "kia",
             titulo: "Kia Picanto 2020",
             precio: 9800,
@@ -247,6 +250,7 @@
             kilometraje: 45000
         },
         {
+            id: 4,
             marca: "nissan",
             titulo: "Nissan Kicks 2019",
             precio: 14000,
@@ -257,6 +261,7 @@
             kilometraje: 60000
         },
         {
+            id: 5,
             marca: "toyota",
             titulo: "Toyota Corolla 2016",
             precio: 12000,
@@ -267,6 +272,7 @@
             kilometraje: 110000
         },
         {
+            id: 6,
             marca: "honda",
             titulo: "Honda CR-V 2015",
             precio: 13500,
@@ -277,6 +283,7 @@
             kilometraje: 125000
         },
         {
+            id: 7,
             marca: "chevrolet",
             titulo: "Chevrolet Spark 2019",
             precio: 7500,
@@ -287,6 +294,7 @@
             kilometraje: 55000
         },
         {
+            id: 8,
             marca: "mitsubishi",
             titulo: "Mitsubishi L200 2018 (Doble Cabina)",
             precio: 20500,
@@ -297,6 +305,7 @@
             kilometraje: 80000
         },
         {
+            id: 9,
             marca: "suzuki",
             titulo: "Suzuki Swift 2021",
             precio: 11000,
@@ -307,6 +316,7 @@
             kilometraje: 30000
         },
         {
+            id: 10,
             marca: "hyundai",
             titulo: "Hyundai Tucson 2017",
             precio: 15500,
@@ -353,43 +363,36 @@
 
 
     // Función para renderizar las tarjetas de autos en la galería principal
-    function renderAutos() {
-        const marca = marcaSelect.value;
-        const orden = ordenSelect.value;
+function renderAutos() {
+    const marca = marcaSelect.value;
+    const orden = ordenSelect.value;
 
-        let filtrados = autos.filter(auto => marca === "todos" || auto.marca === marca);
+    let filtrados = autos.filter(auto => marca === "todos" || auto.marca === marca);
 
-        // Ordenar los autos
-        if (orden === "precio-asc") {
-            filtrados.sort((a, b) => a.precio - b.precio);
-        } else if (orden === "precio-desc") {
-            filtrados.sort((a, b) => b.precio - a.precio);
-        } else if (orden === "anio-asc") {
-            filtrados.sort((a, b) => a.anio - b.anio);
-        } else if (orden === "anio-desc") {
-            filtrados.sort((a, b) => b.anio - a.anio);
-        }
+    if (orden === "precio-asc") filtrados.sort((a, b) => a.precio - b.precio);
+    if (orden === "precio-desc") filtrados.sort((a, b) => b.precio - a.precio);
+    if (orden === "anio-asc") filtrados.sort((a, b) => a.anio - b.anio);
+    if (orden === "anio-desc") filtrados.sort((a, b) => b.anio - a.anio);
 
-        carContainer.innerHTML = ""; // Limpiar el contenedor antes de añadir nuevos autos
-        filtrados.forEach(auto => {
-            const cardHTML = `
-                <div class="col">
-                    <div class="card car-card">
-                        <img src="${auto.imagen}" class="card-img-top" alt="${auto.titulo}">
-                        <div class="card-body">
-                            <h5 class="card-title">${auto.titulo}</h5>
-                            <p class="card-text">Precio: $${auto.precio} | Año: ${auto.anio}</p>
-                            <p class="card-text">Kilometraje: ${auto.kilometraje.toLocaleString()} km</p>
-                            <p class="card-text small text-muted">${auto.descripcion}</p>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#comprar-${auto.id}">Comprar</button>
-                        </div>
+    carContainer.innerHTML = "";
+    filtrados.forEach(auto => {
+        const cardHTML = `
+            <div class="col">
+                <div class="card car-card">
+                    <img src="${auto.imagen}" class="card-img-top" alt="${auto.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${auto.titulo}</h5>
+                        <p class="card-text">Precio: $${auto.precio} | Año: ${auto.anio}</p>
+                        <p class="card-text">Kilometraje: ${auto.kilometraje.toLocaleString()} km</p>
+                        <p class="card-text small text-muted">${auto.descripcion}</p>
+                        <button class="btn btn-primary btn-sm" onclick="abrirModalAuto(${auto.id})">Comprar</button>
                     </div>
-                </div>`;
-            carContainer.innerHTML += cardHTML;
-        });
-    }
+                </div>
+            </div>`;
+        carContainer.innerHTML += cardHTML;
+    });
+}
+
 
     // Función que desplaza al formulario de contacto y preselecciona un auto (llamada desde los botones "Comprar" de las tarjetas)
     function scrollToContactFormAndSelectAuto(autoTitulo) {
@@ -457,5 +460,31 @@
     // **IMPORTANTE:** Esta línea asegura que la sección "Comprar" esté visible por defecto al cargar el formulario
     showFormSection('comprar');
 </script>
+<!-- Modal de información de auto -->
+<div class="modal fade" id="autoModal" tabindex="-1" aria-labelledby="autoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="autoModalLabel">Información del Auto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalAutoImagen" src="" class="img-fluid rounded mb-3" alt="Auto">
+        <p id="modalAutoDescripcion"></p>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Precio:</strong> <span id="modalAutoPrecio"></span></li>
+          <li class="list-group-item"><strong>Año:</strong> <span id="modalAutoAnio"></span></li>
+          <li class="list-group-item"><strong>Kilometraje:</strong> <span id="modalAutoKilometraje"></span> km</li>
+          <li class="list-group-item"><strong>Tipo:</strong> <span id="modalAutoTipo"></span></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="modalComprarBtn">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
