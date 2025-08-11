@@ -178,3 +178,26 @@ document.body.addEventListener('click', function (e) {
     alert(mensaje);
   }
 });
+function abrirModalAuto(id) {
+    const auto = autos.find(a => a.id === id);
+    if (!auto) return;
+
+    document.getElementById("autoModalLabel").textContent = auto.titulo;
+    document.getElementById("modalAutoImagen").src = auto.imagen;
+    document.getElementById("modalAutoImagen").alt = auto.titulo;
+    document.getElementById("modalAutoDescripcion").textContent = auto.descripcion;
+    document.getElementById("modalAutoPrecio").textContent = `$${auto.precio}`;
+    document.getElementById("modalAutoAnio").textContent = auto.anio;
+    document.getElementById("modalAutoKilometraje").textContent = auto.kilometraje.toLocaleString();
+    document.getElementById("modalAutoTipo").textContent = auto.tipo;
+
+    // Evento para ir al formulario
+    document.getElementById("modalComprarBtn").onclick = function() {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('autoModal'));
+        modal.hide();
+        scrollToContactFormAndSelectAuto(auto.titulo);
+    };
+
+    const modal = new bootstrap.Modal(document.getElementById('autoModal'));
+    modal.show();
+}
