@@ -491,6 +491,34 @@ function renderAutos() {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+function abrirModalAuto(autoId) {
+    const auto = autos.find(a => a.id === autoId);
+    if (!auto) return;
+
+
+    document.getElementById("modalAutoImagen").src = auto.imagen;
+    document.getElementById("modalAutoImagen").alt = auto.titulo;
+    document.getElementById("modalAutoDescripcion").textContent = auto.descripcion;
+    document.getElementById("modalAutoPrecio").textContent = `$${auto.precio}`;
+    document.getElementById("modalAutoAnio").textContent = auto.anio;
+    document.getElementById("modalAutoKilometraje").textContent = auto.kilometraje.toLocaleString();
+    document.getElementById("modalAutoTipo").textContent = auto.tipo;
+
+
+    document.getElementById("modalComprarBtn").onclick = function() {
+        scrollToContactFormAndSelectAuto(auto.titulo);
+        const modalInstance = bootstrap.Modal.getInstance(document.getElementById('autoModal'));
+        modalInstance.hide();
+    };
+
+
+    const modal = new bootstrap.Modal(document.getElementById('autoModal'));
+    modal.show();
+}
+</script>
+
+</body>
+</html>
 
 
 
